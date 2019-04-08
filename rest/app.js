@@ -11,6 +11,7 @@ app.listen(3000, function () {
 
 */
 
+
 const express = require('express')
     , bodyParser = require('body-parser')
     , cors = require('cors')
@@ -45,7 +46,7 @@ app.get('/sensors', (req, res) => {
 app.get('/sensors/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const sensor = sensors.filter((item) => item.id === id);
-
+  
   if (sensor.length <= 0) {
     return res.json({});
   }
@@ -53,29 +54,38 @@ app.get('/sensors/:id', (req, res) => {
 });
 
 app.post('/sensors', (req, res) => {
+  var data = new Date()
   const sensor = {
     'id': req.body.id,
     'name': req.body.name,
     'type': req.body.type,
     'value': req.body.value,
+    'year': data.getFullYear(),
+    'month': data.getMonth(),
+    'day': data.getDay(),
+    'time': data.getHours() +':'+ data.getMinutes() +':'+ data.getSeconds()
   };
   sensors.push(sensor);
 
   res.json(sensor);
+  countValue()
 });
 
 /* App listen */
-app.listen(3000, () => {
+app.listen(3000, '0.0.0.0', function()  {
   console.log(`nodejs-backend is running`);
-  console.log(`open in http://127.0.0.1:3000/sensors`);
+  console.log(`open in http://0.0.0.0:3000/sensors`);
 });
 
 
 function countValue(){
 	var valor = 0
 	for(var i = 0; i < sensors.length; i++){
-		valor += sensors[i].value
-	}
+		valor += parseFloat(sensors[i].value)
+  }
+  parseFloat(valor)
+  console.log(`Ultima amostra: ${sensors[sensors.length-1].value}`)
+  console.log(sensors.length)
 	console.log(`A soma é ${valor}`)
 	console.log(`A media é ${valor/sensors.length}`)
 }
