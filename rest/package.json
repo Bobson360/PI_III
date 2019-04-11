@@ -1,17 +1,21 @@
 {
-  "name": "exp",
+  "name": "rest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
+    "body-parser": "^1.18.3",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
-    "nodemon": "^1.18.10"
+    "http": "0.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
