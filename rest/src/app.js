@@ -9,7 +9,7 @@ const router        =   express.Router()
 
 // Carregar as rotas
 const index = require('./routes/index')
-const sensorRoute = require('./routes/prodRoutes')
+const sensorRoute = require('./routes/Routes')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
