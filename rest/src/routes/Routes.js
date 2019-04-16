@@ -17,6 +17,9 @@ const controller    = require('../controllers/Monitoring_Controller')
 //     })
 // })
 
-router.post('/', controller.start_monitoring)
+router.get('/:id', controller.get)
+router.put('/:id', controller.put)
+router.post('/',   controller.post)
+router.put('/end/:id', controller.endShower)
 
 module.exports = router
