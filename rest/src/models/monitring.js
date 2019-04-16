@@ -20,7 +20,7 @@ const schema = new Schema({
                         tempIN:  Number,    // temperatura de entrada da agua
                         tempOUT: Number,    // temperatura de saida da agua
                         vol:     Number,    // volume em litros entre as medições
-                        time:    Number     // tempo em segungo entre as medições
+                        time:    Number     // tempo em segundos entre as medições
                     }
                 ]
         },
