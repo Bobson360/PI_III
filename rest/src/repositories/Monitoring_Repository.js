@@ -13,6 +13,16 @@ exports.get = async(id) => {
     return shower
 }
 
+exports.getAllUsers = async() => {
+    console.log('getAllUsers')
+    const shower = await Shower
+    .find({
+        // _id:id
+        // 'user':'robson'
+    })
+    return shower
+}
+
 exports.getBySlug = async(slug) => {
     const res = await Product
     .findOne({
@@ -33,7 +43,9 @@ exports.getById = async(id) => {
 exports.create = async(data) => {
     console.log('metodo create')
     var shower = new Shower(data)
-    await shower.save()
+    await shower.save(function(err, shower){
+        console.log(shower)
+    })
 }
 
 exports.update = async(id, data) => {
